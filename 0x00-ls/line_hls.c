@@ -35,12 +35,24 @@ void add_line(line_hls_t **node)
 
 	new_node = (line_hls_t *)malloc(sizeof(line_hls_t));
 	if (!new_node)
-		return;
+	{
+		fprintf(stderr, "Error malloc node!");
+		clean(*node);
+		exit(EXIT_FAILURE);
+	}
 
 	new_node->perm = (char *)malloc(sizeof(char) * 12);
 	new_node->usrname = (char *)malloc(sizeof(char) * 256);
 	new_node->grpname = (char *)malloc(sizeof(char) * 256);
 	new_node->name = (char *)malloc(sizeof(char) * 256);
+
+	if (!(new_node->perm) || !(new_node->usrname) || !(new_node->grpname) ||
+		!(new_node->name))
+	{
+		fprintf(stderr, "Error malloc string add_line()!");
+		clean(*node);
+		exit(EXIT_FAILURE);
+	}
 	new_node->next = *node;
 	*node = new_node;
 }

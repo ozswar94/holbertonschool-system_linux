@@ -57,7 +57,8 @@ void setup_list_dir(line_hls_t **head, char *name, flag_t *flag)
 		hstrcpy(pathname, name);
 		hstrcat(pathname, read->d_name);
 
-		if (flag->almost_all && read->d_name[0] == '.')
+		if ((hstrcmp(read->d_name, ".") == 0 ||
+				hstrcmp(read->d_name, "..") == 0))
 			continue;
 		setup_list_file(&lines, pathname, read, flag);
 	}

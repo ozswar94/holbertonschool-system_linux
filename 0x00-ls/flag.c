@@ -16,7 +16,7 @@ void setup_flag(flag_t **flag)
 
 	tmp->long_listing_f = 0;
 	tmp->all = 0;
-	tmp->almost_all = 1;
+	tmp->almost_all = 0;
 	tmp->list_on_file_per_line = 0;
 	tmp->reverse = 0;
 	tmp->recursive = 0;
