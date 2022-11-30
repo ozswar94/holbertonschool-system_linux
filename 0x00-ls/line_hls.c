@@ -10,25 +10,18 @@
 void print_name(line_hls_t *node, flag_t *flag)
 {
 	line_hls_t *node_temp = node;
+	(void)flag;
 
-	while (node_temp->next)
+	while (node_temp)
 	{
-		if (node_temp->name[0] == '.' && flag->almost_all)
-		{
-			node_temp = node_temp->next;
-			continue;
-		}
+		if (node_temp->next == NULL)
+			printf("%s\n", node_temp->name);
 		else
-		{
-			if (node_temp->next->next == NULL)
-				fprintf(stdout, "%s\n", node_temp->name);
-			else
-				fprintf(stdout, "%s  ", node_temp->name);
-		}
+			printf("%s  ", node_temp->name);
+
 		node_temp = node_temp->next;
 	}
 }
-
 
 
 /**
