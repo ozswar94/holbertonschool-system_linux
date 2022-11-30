@@ -31,7 +31,7 @@ typedef struct line_hls_s
  */
 typedef struct dirent dirent;
 
-void print_name(line_hls_t *node, flag_t *flag);
+void print_name(line_hls_t *node);
 void add_line(line_hls_t **node);
 void clean(line_hls_t *node);
 

@@ -43,7 +43,6 @@ typedef struct permfile_s
 	char symbole;
 } permfile_t;
 
-
 /**
  * struct flag_s - flag of command
  * @long_listing_f: flag l
@@ -72,10 +71,8 @@ typedef struct flag_s
 
 
 /* function */
-int hls(flag_t *flag, char *name);
+int hls(char *name);
 char *check_typeof_file(mode_t mode, char *perm);
-void isdirectory(char *pathname, flag_t *flag);
-void setup_flag(flag_t **flag);
 char *setup_pathname(char *name);
 
 #endif /* _HLS_H */

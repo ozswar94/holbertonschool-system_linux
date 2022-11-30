@@ -23,26 +23,3 @@ char *setup_pathname(char *name)
 
 	return (pathname);
 }
-
-
-/**
- * isdirectory - check if pathname is a directory
- * @pathname: string
- * @flag: flag option
- *
- */
-
-void isdirectory(char *pathname, flag_t *flag)
-{
-	struct stat buf;
-	unsigned int size = hstrlen(pathname);
-
-	lstat(pathname, &buf);
-
-	if (buf.st_mode & S_IFDIR)
-	{
-		flag->directory = 1;
-		if (pathname[size - 1] != '/')
-			hstrcat(pathname, "/");
-	}
-}

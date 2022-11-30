@@ -6,10 +6,9 @@
  * @head: head of nodes
  * @name: name of file
  * @read: stream directory
- * @flag: flag of option command
  */
 void setup_list_file(line_hls_t ***head, char *name,
-dirent *read, flag_t *flag)
+dirent *read)
 {
 	struct stat buf;
 	struct passwd *usr;
@@ -31,10 +30,8 @@ dirent *read, flag_t *flag)
 	(*lines)->size = buf.st_size;
 
 	(*lines)->time = &(buf.st_mtime);
-	if (flag->directory)
-		hstrcpy((*lines)->name, read->d_name);
-	else
-		hstrcpy((*lines)->name, name);
+
+	hstrcpy((*lines)->name, read->d_name);
 	**head = *lines;
 }
 
@@ -42,9 +39,8 @@ dirent *read, flag_t *flag)
  * setup_list_dir - setup list directory
  * @head: head of nodes
  * @name: pathname directory
- * @flag: flag of option command
  */
-void setup_list_dir(line_hls_t **head, char *name, flag_t *flag)
+void setup_list_dir(line_hls_t **head, char *name)
 {
 	DIR *dir;
 	struct dirent *read;
@@ -57,27 +53,25 @@ void setup_list_dir(line_hls_t **head, char *name, flag_t *flag)
 		hstrcpy(pathname, name);
 		hstrcat(pathname, read->d_name);
 
-		if ((hstrcmp(read->d_name, ".") == 0 ||
-				hstrcmp(read->d_name, "..") == 0))
+		if (read->d_name[0] == '.')
 			continue;
-		setup_list_file(&lines, pathname, read, flag);
+		setup_list_file(&lines, pathname, read);
 	}
 	closedir(dir);
 }
 
 /**
  * hls - command hls
- * @flag: flag of option command
  * @name: pathname
  *
  * Return: error handling
  */
-int hls(flag_t *flag, char *name)
+int hls(char *name)
 {
 	line_hls_t *lines = NULL;
 
-	setup_list_dir(&lines, name, flag);
-	print_name(lines, flag);
+	setup_list_dir(&lines, name);
+	print_name(lines);
 	clean(lines);
 	return (0);
 }

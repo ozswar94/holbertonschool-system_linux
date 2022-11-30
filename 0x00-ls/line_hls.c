@@ -4,13 +4,11 @@
 /**
  * print_name - list name of file
  * @node: head of node
- * @flag: flag option
  *
  */
-void print_name(line_hls_t *node, flag_t *flag)
+void print_name(line_hls_t *node)
 {
 	line_hls_t *node_temp = node;
-	(void)flag;
 
 	while (node_temp)
 	{
