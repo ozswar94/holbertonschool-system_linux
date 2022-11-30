@@ -14,7 +14,6 @@
 #include "hstring.h"
 
 
-
 /**
  * struct typefile_s - show type of files on command hls
  * @mask: st_mode of file
@@ -25,7 +24,7 @@
  */
 typedef struct typefile_s
 {
-	int mask;
+	unsigned int mask;
 	char symbole;
 } typefile_t;
 
@@ -40,7 +39,7 @@ typedef struct typefile_s
  */
 typedef struct permfile_s
 {
-	int mask;
+	unsigned int mask;
 	char symbole;
 } permfile_t;
 
@@ -78,4 +77,5 @@ char *check_typeof_file(mode_t mode, char *perm);
 void isdirectory(char *pathname, flag_t *flag);
 void setup_flag(flag_t **flag);
 char *setup_pathname(char *name);
+
 #endif /* _HLS_H */

@@ -12,9 +12,9 @@ char *check_typeof_file(mode_t mode, char *perm)
 {
 	int i;
 	typefile_t types[7] = {
-		{S_ISREG(mode), '-'}, {S_ISDIR(mode), 'd'}, {S_ISCHR(mode), 'c'},
-		{S_ISBLK(mode), 'b'}, {S_ISFIFO(mode), 'P'}, {S_ISLNK(mode), 'l'},
-		{S_ISSOCK(mode), 's'},
+		{S_IFREG, '-'}, {S_IFDIR, 'd'}, {S_IFCHR, 'c'},
+		{S_IFBLK, 'b'}, {S_IFIFO, 'P'}, {S_IFLNK, 'l'},
+		{S_IFSOCK, 's'},
 	};
 
 	permfile_t perm_t[9] = {
@@ -27,7 +27,7 @@ char *check_typeof_file(mode_t mode, char *perm)
 
 	for (i = 0; i < 7; i++)
 	{
-		if (types[i].mask)
+		if ((mode & S_IFMT) == types[i].mask)
 		{
 			perm[0] = types[i].symbole;
 			break;
