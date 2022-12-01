@@ -69,7 +69,9 @@ int hls(char *name)
 	if (!name)
 		return (-1);
 
-	line_hls_t *lines = NULL;
+	line_hls_t *lines;
+
+	lines = NULL;
 
 	setup_list_dir(&lines, name);
 	print_name(lines);
