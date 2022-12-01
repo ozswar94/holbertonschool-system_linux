@@ -66,12 +66,10 @@ void setup_list_dir(line_hls_t **head, char *name)
  */
 int hls(char *name)
 {
+	line_hls_t *lines = NULL;
+
 	if (!name)
 		return (-1);
-
-	line_hls_t *lines;
-
-	lines = NULL;
 
 	setup_list_dir(&lines, name);
 	print_name(lines);
