@@ -12,6 +12,7 @@
 #include <grp.h>
 #include <pwd.h>
 #include "hstring.h"
+#include <errno.h>
 
 
 /**
@@ -54,6 +55,7 @@ typedef struct permfile_s
  * @sorting_by_size: flag S
  * @sorting_by_modificationtime: flag t
  * @directory: if is a directory or not
+ * @default_hls: default
  * Description: define flag of command
  */
 typedef struct flag_s
@@ -67,12 +69,15 @@ typedef struct flag_s
 	unsigned char sorting_by_size;
 	unsigned char sorting_by_modificationtime;
 	unsigned char directory;
+	unsigned char default_hls;
 } flag_t;
+
+extern flag_t flag;
 
 
 /* function */
 int hls(char *name);
 char *check_typeof_file(mode_t mode, char *perm);
-char *setup_pathname(char *name);
+char *setup_pathname(char *name, char *program_name);
 
 #endif /* _HLS_H */

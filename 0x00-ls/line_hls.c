@@ -9,15 +9,28 @@
 void print_name(line_hls_t *node)
 {
 	line_hls_t *node_temp = node;
+	int i = 0;
 
 	while (node_temp)
 	{
+		if (node_temp && node_temp->name[0] == '.')
+		{
+			node_temp = node_temp->next;
+			if (!node_temp)
+				printf("\n");
+			continue;
+		}
+		/*space bitween value*/
+		if (i != 0)
+			printf("  ");
+
 		if (node_temp->next == NULL)
 			printf("%s\n", node_temp->name);
 		else
-			printf("%s  ", node_temp->name);
+			printf("%s", node_temp->name);
 
 		node_temp = node_temp->next;
+		i++;
 	}
 }
 

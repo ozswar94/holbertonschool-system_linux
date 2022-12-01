@@ -53,8 +53,6 @@ void setup_list_dir(line_hls_t **head, char *name)
 		hstrcpy(pathname, name);
 		hstrcat(pathname, read->d_name);
 
-		if (read->d_name[0] == '.')
-			continue;
 		setup_list_file(&lines, pathname, read);
 	}
 	closedir(dir);
@@ -68,6 +66,9 @@ void setup_list_dir(line_hls_t **head, char *name)
  */
 int hls(char *name)
 {
+	if (!name)
+		return (-1);
+
 	line_hls_t *lines = NULL;
 
 	setup_list_dir(&lines, name);
