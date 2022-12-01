@@ -72,7 +72,6 @@ typedef struct flag_s
 	unsigned char default_hls;
 } flag_t;
 
-extern flag_t flag;
 
 
 /* function */
