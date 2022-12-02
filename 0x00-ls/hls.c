@@ -31,7 +31,10 @@ dirent *read)
 
 	(*lines)->time = &(buf.st_mtime);
 
-	hstrcpy((*lines)->name, read->d_name);
+	if (read)
+		hstrcpy((*lines)->name, read->d_name);
+	else
+		hstrcpy((*lines)->name, name);
 	**head = *lines;
 }
 
@@ -48,6 +51,11 @@ void setup_list_dir(line_hls_t **head, char *name)
 	line_hls_t **lines = head;
 
 	dir = opendir(name);
+	if (dir == NULL)
+	{
+		setup_list_file(&lines, name, NULL);
+		return;
+	}
 	while ((read = readdir(dir)))
 	{
 		hstrcpy(pathname, name);
