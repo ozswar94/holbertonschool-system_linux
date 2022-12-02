@@ -1,5 +1,6 @@
 #include "hls.h"
 
+
 /**
  * main - entry function
  * @argc: number of argument
@@ -9,15 +10,25 @@
  */
 int main(int argc, char **argv)
 {
-	int i;
-	int status = 0;
+	int i, nb_option = 0, status = 0;
 	char *pathname;
+	flag_t flag = {0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-	if (argc < 2)
-		hls("./");
+    /*option validation*/
+	for (i = argc - 1; i > 0; i--)
+		if (argv[i][0] == '-')
+		{
+			define_flag(argv[i], &flag);
+			nb_option++;
+		}
+
+	if (argc < 2 || nb_option == argc - 1)
+		hls("./", flag);
 	else
 		for (i = argc - 1; i > 0; i--)
 		{
+			if (argv[i][0] == '-')
+				continue;
 			pathname = setup_pathname(argv[i], argv[0]);
 			if (errno > status)
 				status = errno;
@@ -25,7 +36,7 @@ int main(int argc, char **argv)
 			if (argc >= 3 && pathname)
 				printf("%s:\n", argv[i]);
 
-			hls(pathname);
+			hls(pathname, flag);
 
 			if (argc >= 3 && i > 1 && pathname)
 				printf("\n");

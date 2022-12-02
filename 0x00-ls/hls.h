@@ -54,7 +54,6 @@ typedef struct permfile_s
  * @recursive: flag R
  * @sorting_by_size: flag S
  * @sorting_by_modificationtime: flag t
- * @directory: if is a directory or not
  * @default_hls: default
  * Description: define flag of command
  */
@@ -68,15 +67,14 @@ typedef struct flag_s
 	unsigned char recursive;
 	unsigned char sorting_by_size;
 	unsigned char sorting_by_modificationtime;
-	unsigned char directory;
 	unsigned char default_hls;
 } flag_t;
 
 
-
 /* function */
-int hls(char *name);
+int hls(char *name, flag_t flag);
 char *check_typeof_file(mode_t mode, char *perm);
 char *setup_pathname(char *name, char *program_name);
+void define_flag(char *option, flag_t *flag);
 
 #endif /* _HLS_H */

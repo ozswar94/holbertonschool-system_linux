@@ -13,6 +13,7 @@ dirent *read)
 	struct stat buf;
 	struct passwd *usr;
 	struct group *grp;
+	char datetime[256];
 	line_hls_t **lines = *head;
 
 	lstat(name, &buf);
@@ -29,7 +30,11 @@ dirent *read)
 
 	(*lines)->size = buf.st_size;
 
-	(*lines)->time = &(buf.st_mtime);
+	hstrcpy(datetime, ctime(&(buf.st_mtime)));
+	datetime[hstrlen(datetime) - 9] = '\0';
+	hstrcpy((*lines)->time, (datetime + 4));
+
+	(*lines)->hlnk = buf.st_nlink;
 
 	if (read)
 		hstrcpy((*lines)->name, read->d_name);
@@ -69,10 +74,10 @@ void setup_list_dir(line_hls_t **head, char *name)
 /**
  * hls - command hls
  * @name: pathname
- *
+ * @flag: option command
  * Return: error handling
  */
-int hls(char *name)
+int hls(char *name, flag_t flag)
 {
 	line_hls_t *lines = NULL;
 
@@ -80,7 +85,7 @@ int hls(char *name)
 		return (-1);
 
 	setup_list_dir(&lines, name);
-	print_name(lines);
+	print_list(lines, flag);
 	clean(lines);
 	return (0);
 }
