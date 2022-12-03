@@ -10,10 +10,19 @@
 void print_list(line_hls_t *node, flag_t flag)
 {
 	line_hls_t *node_temp = node;
+	int digit = 0;
 
 	while (node_temp)
 	{
-		format_string(node_temp, flag);
+		if (number_digit(node_temp->size) > digit)
+			digit = number_digit(node_temp->size);
+		node_temp = node_temp->next;
+	}
+
+	node_temp = node;
+	while (node_temp)
+	{
+		format_string(node_temp, flag, digit);
 
 		if (node_temp)
 			node_temp = node_temp->next;

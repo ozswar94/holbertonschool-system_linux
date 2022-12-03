@@ -36,5 +36,6 @@ typedef struct dirent dirent;
 void print_list(line_hls_t *node, flag_t flag);
 void add_line(line_hls_t **node);
 void clean(line_hls_t *node);
-void format_string(line_hls_t *node, flag_t flag);
+void format_string(line_hls_t *node, flag_t flag, int digit);
+int number_digit(unsigned int nb);
 #endif /* _LINE_HLS_H */
