@@ -76,7 +76,7 @@ cars_t *add_cars(cars_t **head, int id)
 void race_state(int *id, size_t size)
 {
 	size_t i;
-	cars_t *tmp;
+	cars_t *tmp = NULL;
 	static cars_t *node_cars;
 
 	if (!size)
