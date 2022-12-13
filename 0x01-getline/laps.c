@@ -81,7 +81,7 @@ void race_state(int *id, size_t size)
 
 	if (!size)
 	{
-		while (tmp && node_cars)
+		while (node_cars)
 		{
 			tmp = node_cars;
 			node_cars = node_cars->next;
