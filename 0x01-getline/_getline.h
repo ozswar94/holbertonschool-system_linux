@@ -6,15 +6,29 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define READ_SIZE 1024
+#define READ_SIZE 32
 
-typedef struct lines_s
+
+/**
+ * struct reader_s - linked list for storage line in fd
+ * @fd: file desciptor
+ * @buf: buffer of read
+ * @bytes: number of bytes read
+ * @next: next element in linked list
+ *
+ * Description: Longer description
+ */
+typedef struct reader_s
 {
-    int fd;
-    char *line;
-    struct line_s *next;
-} lines_t;
+	int fd;
+	char *buf;
+	int bytes;
+	struct reader_s *next;
+} reader_t;
 
+
+/*function*/
 char *_getline(const int fd);
+char *find_line(reader_t *rd);
 
 #endif /*__GETLINE_H_*/
