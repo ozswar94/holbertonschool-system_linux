@@ -98,10 +98,8 @@ void race_state(int *id, size_t size)
 		tmp = node_cars;
 		for (i = 0; i < size; i++)
 		{
-			if (!not_in_race(tmp, id[i]))
-				tmp = add_cars(&tmp, id[i]);
-
-			tmp = tmp->next;
+			if (!not_in_race(node_cars, id[i]))
+				node_cars = add_cars(&node_cars, id[i]);
 		}
 	}
 
