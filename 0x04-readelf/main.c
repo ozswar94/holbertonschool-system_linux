@@ -7,6 +7,12 @@
 #include <sys/mman.h>
 #include "hreadelf.h"
 
+/**
+* main - run hreadelf
+* @argc: number of argument
+* @argv: argument
+* Return: 0 if success
+*/
 int main(int argc, char **argv)
 {
 	int fd;
@@ -40,7 +46,7 @@ int main(int argc, char **argv)
 		goto cleanup;
 	}
 
-	read_elf64_header(ptr_elf);
+	hreadelf(&ptr_elf);
 
 cleanup:
 	if (fd != -1)
