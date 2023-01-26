@@ -15,4 +15,7 @@ void choose_type(unsigned int type);
 void choose_os_abi(unsigned int os_abi);
 void choose_data(unsigned int id_data);
 
+void print_elf64_section_header(Elf64_Ehdr *header, void *ptr);
+void print_elf32_section_header(Elf32_Ehdr *header, void *ptr);
+
 #endif /*HREADELF_H*/

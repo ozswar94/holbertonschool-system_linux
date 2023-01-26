@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "hreadelf.h"
 
+
 /**
 * read_elf64_header - check if elf 64bit
 * @ptr_elf: anonyme pointer elf
@@ -19,7 +20,11 @@ int read_elf64_header(void *ptr_elf)
 	}
 
 	if (header->e_ident[EI_CLASS] == ELFCLASS64)
+	{
 		print_elf64_header(header);
+
+		/*print_elf64_section_header(header, ptr_elf);*/
+	}
 	else
 		return (-1);
 
@@ -45,7 +50,11 @@ int read_elf32_header(void *ptr_elf)
 	}
 
 	if (header->e_ident[EI_CLASS] == ELFCLASS32)
+	{
 		print_elf32_header(header);
+
+		/*print_elf32_section_header(header, ptr_elf);*/
+	}
 	else
 		return (-1);
 

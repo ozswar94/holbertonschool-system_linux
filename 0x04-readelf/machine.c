@@ -4,7 +4,6 @@
 #include <string.h>
 #include "machine.h"
 
-
 /**
 * choose_machine - select the good machine by id and print name of machine
 * @id_machine: id of machine

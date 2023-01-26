@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	}
 
 	file_size = lseek(fd, 0, SEEK_END);
-	if (file_size < 0)
+	if (!file_size)
 	{
 		perror("lseek failed!");
 		goto cleanup;
