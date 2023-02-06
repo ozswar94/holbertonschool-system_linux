@@ -6,10 +6,10 @@ section .text
 asm_putc:
     push rbp
     mov rbp, rsp
-
+	push rdi
 	mov rax, 1
     mov rdi, 1
-	mov rsi, rdi
+	mov rsi, rsp
     mov rdx, 1
 	syscall
     mov rax, 1
