@@ -16,7 +16,7 @@ str_loop:
     je find
     inc rcx
     mov rax, 0
-    jmp strloop
+    jmp str_loop
 find:
     lea rax, [rdi + rcx]
 exit:
