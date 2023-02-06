@@ -8,7 +8,7 @@ asm_strchr:
     mov rbp, rsp
     xor rax, rax
     mov rcx, 0
-string_loop:
+str_loop:
     mov al, byte [rdi + rcx]
     cmp al, 0 
     je exit
