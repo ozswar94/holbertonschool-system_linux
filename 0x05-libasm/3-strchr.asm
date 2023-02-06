@@ -6,16 +6,15 @@ section .text
 asm_strchr:
     push rbp
     mov rbp, rsp
-    xor rax, rax
     mov rcx, 0
 str_loop:
+    xor rax, rax
     mov al, byte [rdi + rcx]
     cmp al, 0 
     je exit
     cmp al, sil
     je find
     inc rcx
-    mov rax, 0
     jmp str_loop
 find:
     lea rax, [rdi + rcx]
