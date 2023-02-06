@@ -10,23 +10,25 @@ asm_strncmp:
 compare:
     xor rax, rax
     xor rbx, rbx
-    cmp rcx, rdx
+    cmp ecx, edx
     je exit
     mov al, byte [rdi + rcx]
     mov bl, byte [rsi + rcx]
     cmp al, bl
     je equal
-    jne diff
+    jl less
+    jg greate
 equal:
     cmp al, 0
     je exit
     inc rcx
     jmp compare
-
-diff:
-    sub rax, rbx
+less:
+    mov rax, -1
     jmp exit
-
+greate:
+    mov rax, 1
+    jmp exit
 exit:
     mov rsp, rbp
     pop rbp
