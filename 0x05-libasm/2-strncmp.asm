@@ -25,6 +25,7 @@ equal:
 
 diff:
     sub rax, rbx
+    jmp exit
 
 exit:
     mov rsp, rbp
