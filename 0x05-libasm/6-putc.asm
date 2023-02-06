@@ -7,11 +7,12 @@ asm_putc:
     push rbp
     mov rbp, rsp
 
-    mov rax, 1
+	mov rax, 1
     mov rdi, 1
-    mov rdx, rdi
+	mov rsi, rdi
+    mov rdx, 1
 	syscall
     mov rax, 1
-    mov rsp, rbp
+	mov rsp, rbp
     pop rbp
     ret
