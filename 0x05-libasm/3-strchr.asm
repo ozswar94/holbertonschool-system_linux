@@ -8,12 +8,11 @@ asm_strchr:
     mov rbp, rsp
     mov rcx, 0
 str_loop:
-    xor rax, rax
     mov al, byte [rdi + rcx]
-    test al, al
-    jz null
     cmp al, sil
     je find
+    test al, al
+    jz null
     inc rcx
     jmp str_loop
 null:
