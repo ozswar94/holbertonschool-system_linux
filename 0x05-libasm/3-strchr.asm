@@ -10,12 +10,15 @@ asm_strchr:
 str_loop:
     xor rax, rax
     mov al, byte [rdi + rcx]
-    cmp al, 0 
-    je exit
+    test al, al
+    jz null
     cmp al, sil
     je find
     inc rcx
     jmp str_loop
+null:
+    xor rax, rax
+    jmp exit
 find:
     lea rax, [rdi + rcx]
 exit:
