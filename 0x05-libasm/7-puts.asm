@@ -15,6 +15,7 @@ asm_puts:
 	mov rsi, [rsp]
 	syscall
     mov rax, rdx
+    pop rdi
 	mov rsp, rbp
     pop rbp
     ret

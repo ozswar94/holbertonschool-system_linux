@@ -13,6 +13,7 @@ asm_putc:
     mov rdx, 1
 	syscall
     mov rax, 1
+    pop rdi
 	mov rsp, rbp
     pop rbp
     ret
