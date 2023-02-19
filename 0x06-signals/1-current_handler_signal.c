@@ -10,8 +10,9 @@ void (*current_handler_signal(void))(int)
 	void (*sig)(int);
 
 	sig = signal(SIGINT, NULL);
-
 	if (sig == SIG_ERR)
 		return (NULL);
-	return (signal(SIGINT, sig));
+	if (signal(SIGINT, sig) == SIG_ERR)
+		return (NULL);
+	return (sig);
 }

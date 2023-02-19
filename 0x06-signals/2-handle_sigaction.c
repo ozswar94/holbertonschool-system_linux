@@ -11,6 +11,7 @@
 static void print_Gotcha(int signum)
 {
 	printf("Gotcha! [%d]\n", signum);
+	fflush(stdout);
 }
 
 
