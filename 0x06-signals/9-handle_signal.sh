@@ -1,3 +1,3 @@
 #!/bin/bash
 
-trap "Nope" ABRT IO TERM
+trap "echo Nope" ABRT IO TERM
