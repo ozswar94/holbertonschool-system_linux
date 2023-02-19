@@ -12,8 +12,6 @@ void print_caught(int signum)
 {
 	printf("Caught %d\n", signum);
 	puts("Signal received");
-
-	exit(EXIT_SUCCESS);
 }
 
 
@@ -27,11 +25,7 @@ int main(void)
 
 	memset(&act, 0, sizeof(act));
 	act.sa_handler = print_caught;
-	sigemptyset(&act.sa_mask);
-	act.sa_flags = 0;
 	sigaction(SIGINT, &act, NULL);
-
 	pause();
-
-	return (0);
+	return (EXIT_SUCCESS);
 }
