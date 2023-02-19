@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <sys/types.h>
+#include <stdlib.h>
 
 /**
 * main - sends the signal SIGINT to a process, given its PID
