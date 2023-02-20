@@ -15,5 +15,6 @@ void all_in_one(void);
 
 int sigset_init(sigset_t *set, int *signals);
 int signals_block(int *signals);
+int signals_unblock(int *signals);
 
 #endif /*SIGNALS_H*/
