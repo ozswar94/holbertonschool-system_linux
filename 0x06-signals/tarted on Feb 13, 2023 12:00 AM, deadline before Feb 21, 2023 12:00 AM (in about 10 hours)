@@ -1,0 +1,62 @@
+SIGWAIT(3)                                              Linux Programmer's Manual                                              SIGWAIT(3)
+
+NNAAMMEE
+       sigwait - wait for a signal
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee <<ssiiggnnaall..hh>>
+
+        iinntt ssiiggwwaaiitt((ccoonnsstt ssiiggsseett__tt **_s_e_t,, iinntt **_s_i_g));;
+
+   Feature Test Macro Requirements for glibc (see ffeeaattuurree__tteesstt__mmaaccrrooss(7)):
+
+       ssiiggwwaaiitt():
+           Since glibc 2.26:
+               _POSIX_C_SOURCE >= 199506L
+           Glibc 2.25 and earlier:
+               _POSIX_C_SOURCE
+
+DDEESSCCRRIIPPTTIIOONN
+       The  ssiiggwwaaiitt()  function suspends execution of the calling thread until one of the signals specified in the signal set _s_e_t becomes
+       pending.  The function accepts the signal (removes it from the pending list of signals), and returns the signal number in _s_i_g.
+
+       The operation of ssiiggwwaaiitt() is the same as ssiiggwwaaiittiinnffoo(2), except that:
+
+       * ssiiggwwaaiitt() returns only the signal number, rather than a _s_i_g_i_n_f_o___t structure describing the signal.
+
+       * The return values of the two functions are different.
+
+RREETTUURRNN VVAALLUUEE
+       On success, ssiiggwwaaiitt() returns 0.  On error, it returns a positive error number (listed in ERRORS).
+
+EERRRROORRSS
+       EEIINNVVAALL _s_e_t contains an invalid signal number.
+
+AATTTTRRIIBBUUTTEESS
+       For an explanation of the terms used in this section, see aattttrriibbuutteess(7).
+
+       ┌──────────┬───────────────┬─────────┐
+       │IInntteerrffaaccee │ AAttttrriibbuuttee     │ VVaalluuee   │
+       ├──────────┼───────────────┼─────────┤
+       │ssiiggwwaaiitt() │ Thread safety │ MT-Safe │
+       └──────────┴───────────────┴─────────┘
+CCOONNFFOORRMMIINNGG TTOO
+       POSIX.1-2001, POSIX.1-2008.
+
+NNOOTTEESS
+       ssiiggwwaaiitt() is implemented using ssiiggttiimmeeddwwaaiitt(2).
+
+       The glibc implementation of ssiiggwwaaiitt() silently ignores attempts to wait for the two real-time signals that are used internally  by
+       the NPTL threading implementation.  See nnppttll(7) for details.
+
+EEXXAAMMPPLLEESS
+       See pptthhrreeaadd__ssiiggmmaasskk(3).
+
+SSEEEE AALLSSOO
+       ssiiggaaccttiioonn(2), ssiiggnnaallffdd(2), ssiiggppeennddiinngg(2), ssiiggssuussppeenndd(2), ssiiggwwaaiittiinnffoo(2), ssiiggsseettooppss(3), ssiiggnnaall(7)
+
+CCOOLLOOPPHHOONN
+       This page is part of release 5.10 of the Linux _m_a_n_-_p_a_g_e_s project.  A description of the project, information about reporting bugs,
+       and the latest version of this page, can be found at https://www.kernel.org/doc/man-pages/.
+
+Linux                                                           2020-06-09                                                     SIGWAIT(3)
