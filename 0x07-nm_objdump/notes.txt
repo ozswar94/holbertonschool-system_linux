@@ -1,0 +1,19 @@
+ELF = Executable and Linkable Format
+
+C'est le format de ficher binaire disponible dans tous les systeme est *nix like (sauf mac os)
+et disponible dans toutes les architechture.
+
+Ce format de fichier commun des excutalbe, object file, biblioteque partager et des core dump
+
+Le fichier ELF commence par un "magic number" x7f suivi 'E' 'L' 'F' en ascii.
+
+
+Chaque Fichier ELF a un ELF header suivi par fichier data, les data peuvent inclure:
+
+- Program header table, decrit zero ou plus memory segment
+- Section header table, decrit zero ou plus de sections
+- Data qui est referencer par program header et section header
+
+ELF header:
+
+defini si le c'est des addresse 32 bit ou 64 bit
