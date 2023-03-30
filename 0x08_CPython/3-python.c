@@ -46,7 +46,7 @@ void print_python_bytes(PyObject *p)
 	}
 
 	size = PyBytes_Size(p);
-	bytes = ((PyBytesObject *) p)->ob_sval;;
+	bytes = ((PyBytesObject *) p)->ob_sval;
 	printf("  size: %ld\n"
 			"  typing string: %s\n"
 			"  first %ld bytes:",

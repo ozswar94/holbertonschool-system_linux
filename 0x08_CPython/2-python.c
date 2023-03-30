@@ -13,21 +13,21 @@ void print_python_bytes(PyObject *p)
 	puts("[.] bytes object info");
 	if (!PyBytes_Check(p))
 	{
-		fprintf(stderr, "  [ERROR] Invalid Bytes Object\n");
+		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = PyBytes_Size(p);
+	size = ((PyVarObject *)p)->ob_size;
+	size = size < 9 ? size + 1 : 10;
 	bytes = PyBytes_AsString(p);
+
 	printf("  size: %ld\n"
 			"  typing string: %s\n"
-			"  first %ld bytes:",
-			size, bytes,
-			size < 10 ? size + 1 : 10);
+			"  first %ld bytes: ",
+			((PyVarObject *)p)->ob_size, bytes, size);
 
-	for (i = 0; i < size && i < 10; i++)
-		printf(" %02hhx", bytes[i]);
-	putchar('\n');
+	for (i = 0; i < size; i++)
+		printf("%02hhx%c", bytes[i], i + 1 == size ? '\n' : ' ');
 }
 
 
